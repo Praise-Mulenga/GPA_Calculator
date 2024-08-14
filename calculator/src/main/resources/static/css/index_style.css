@@ -1,0 +1,109 @@
+body {
+    background: url('/images/bg1_img.jpg') no-repeat center center fixed; /* Background image */
+    background-size: cover; /* Ensures the background image covers the entire page */
+
+
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px;
+}
+
+.widget {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 45%; /* Adjust the width for side-by-side layout */
+    box-sizing: border-box; /* Ensures padding and border are included in width calculation */
+}
+
+#gpa-widget {
+    max-height: 600px; /* Adjust based on your design */
+    overflow-y: auto; /* Allows vertical scrolling if content exceeds max-height */
+}
+
+#courses-widget {
+    max-height: 600px; /* Adjust based on your design */
+    overflow-y: auto; /* Allows vertical scrolling if content exceeds max-height */
+}
+
+h1, h2 {
+    color: #333;
+}
+
+#course-entries {
+    margin-bottom: 20px;
+}
+
+.course-entry {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"], input[type="number"], select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1.0px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding and border are included in width calculation */
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px; /* Adds spacing between buttons */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#result p {
+    font-size: 18px;
+    color: #333;
+}
+
+#courses-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#courses-table th, #courses-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#courses-table th {
+    background-color: #f4f4f4;
+}
