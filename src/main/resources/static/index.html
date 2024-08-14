@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPA Calculator</title>
-    <link rel="stylesheet" href="/css/index_style.css">
+    <link rel="stylesheet" href="/css/desktop_style.css" media="screen and (min-width: 1080px)">
+    <link rel="stylesheet" href="/css/mobile_style.css" media="screen and (max-width: 1079px)">
 </head>
 <body>
     <div class="container">
@@ -16,8 +17,7 @@
                     <div class="course-entry" id="course-entry-1">
                         <label for="course1" style="font-weight: bolder;">Course 1:</label>
                         <input type="text" id="course1" name="course1" placeholder="Course Name" required>
-                        <input type="number" id="credits1" name="credits1" placeholder="Credits."
-                         title="eg 15 for a half course or 30 for a full course. " min="1" required>
+                        <input type="number" id="credits1" name="credits1" placeholder="Credits" min="1" required>
                         <select id="grade1" name="grade1" required>
                             <option value="" disabled selected>Grade</option>
                             <option value="5.0">A+ (5.0)</option>
@@ -54,18 +54,12 @@
                     <!-- Rows will be dynamically added here -->
                 </tbody>
             </table>
-
-
-            <div class="result" id="result">
-                <p>Your GPA: <span id="gpa2">0.0</span></p>
-            </div>
-
         </div>
     </div>
 
-    <script th:inline="javascript">
+    <script>
         let courseCount = 1;
-    
+
         // Define grade mapping
         const gradeMapping = {
             '5.0': 'A+ (5.0)',
@@ -74,15 +68,13 @@
             '3.0': 'B (3.0)',
             '2.37': 'C+ (2.37)',
             '1.0': 'C (1.0)',
-            '1.0': 'S (1.0)', // Assuming the grade value '1.0' corresponds to both 'C' and 'S'
+            '1.0': 'S (1.0)',
             '0.0': 'D+ (0.0)',
-            '0.0': 'D (0.0)' // Assuming the grade value '0.0' corresponds to both 'D+' and 'D'
+            '0.0': 'D (0.0)'
         };
-    
+
         function addCourse() {
             courseCount++;
-        
-            // Create new course entry elements
             const newCourseEntry = document.createElement('div');
             newCourseEntry.className = 'course-entry';
             newCourseEntry.id = `course-entry-${courseCount}`;
@@ -105,31 +97,25 @@
                 </select>
             `;
         
-            // Append the new course entry to the form
             document.getElementById('course-entries').appendChild(newCourseEntry);
         }
-    
+
         function calculateGPA() {
             let totalCredits = 0;
             let totalPoints = 0;
             const coursesTableBody = document.querySelector('#courses-table tbody');
-            
-            // Clear previous table rows
             coursesTableBody.innerHTML = '';
-    
+
             for (let i = 1; i <= courseCount; i++) {
                 const course = document.getElementById(`course${i}`).value;
                 const credits = parseFloat(document.getElementById(`credits${i}`).value);
                 const grade = document.getElementById(`grade${i}`).value;
-                
-                // Retrieve the grade description
                 const gradeDescription = gradeMapping[grade] || grade;
-    
+
                 if (!isNaN(credits) && gradeDescription) {
                     totalCredits += credits;
                     totalPoints += credits * parseFloat(grade);
-    
-                    // Add a row to the table
+
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${course}</td>
@@ -142,9 +128,7 @@
             
             const gpa = totalPoints / totalCredits || 0;
             document.getElementById('gpa').innerText = gpa.toFixed(2);
-            document.getElementById('gpa2').innerText = gpa.toFixed(2);
         }
     </script>
-    
 </body>
 </html>
